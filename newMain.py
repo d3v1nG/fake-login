@@ -15,8 +15,16 @@ class Window(Frame):
         self.widgets()
         self.entry()
         self.master.title("Finder wants to make changes.")
+        self.finderImg()
 
 #Widgets and Entries
+    def finderImg(self):
+        canvas = Canvas(self, width = 100, height = 100)
+        canvas.grid(row=1, column=1)
+
+        img = PhotoImage(file="./Images/finder.png")
+        canvas.create_image(25,23, image=img)
+
     def widgets(self):
         okayButton = Button(self, text="Okay", command=self.okay)
         okayButton.grid(row=5, column=2)
@@ -29,7 +37,7 @@ class Window(Frame):
         L1.grid(row=2, column=1)
         self.username = tk.Entry(self)
         self.username.grid(row=2, column=2)
-        self.username.bind("<Return>", self.okay)
+        self.username.bind('<Return>', self.okay)
 
         L2 = Label(self, text="Password: ")
         L2.grid(row=3, column=1)
@@ -37,11 +45,12 @@ class Window(Frame):
         self.password = tk.Entry(self)
         self.password.grid(row=3, column=2)
         self.password.config(show=bullet)
-        self.password.bind("<Return>", self.okay)
+        self.password.bind('<Return>', self.okay)
 
-#Button functions (this dont work yet)
+#Button functions (works, but not with <Return> bind)
+# tries idea not trashed, work on later
     def okay(self):
-        tries = 0
+        #tries = 0
         user = self.username.get()
         password = self.password.get()
         if user == "" or password == "":
@@ -49,17 +58,19 @@ class Window(Frame):
         else:
             print("User Name: " + user)
             print("Password: " + password)
-            tries = (tries + 1)
-            print(tries)
+            #tries = (tries + 1)
+            #print(tries)
 
     def exitButton(self):
+        print("~Exiting.~")
         exit()
 
 #Starts the program
 def start():
+    os.system("cls")
+    print("~Waiting for input.~")
     master = Tk()
     app = Window(master)
     master.mainloop()
-
 
 start()
