@@ -1,6 +1,3 @@
-#for 2.7.10
-#from Tkinter import *
-#import Tkinter as Tk
 
 #for 3.6.4
 from tkinter import *
@@ -19,11 +16,12 @@ class Window(Frame):
 
 #Widgets and Entries
     def finderImg(self):
-        canvas = Canvas(self, width = 100, height = 100)
-        canvas.grid(row=1, column=1)
+        #Image doesnt want to fucking show up.
+        canvas = Canvas(self, width = 1000, height = 1000)
+        canvas.grid(row=5, column=5)
 
-        img = PhotoImage(file="./Images/finder.png")
-        canvas.create_image(25,23, image=img)
+        img = PhotoImage(file="./Images/finder.gif")
+        canvas.create_image(25,23, file=img)
 
     def widgets(self):
         okayButton = Button(self, text="Okay", command=self.okay)
@@ -62,13 +60,13 @@ class Window(Frame):
             #print(tries)
 
     def exitButton(self):
-        print("~Exiting.~")
+        print("~Exiting~")
         exit()
 
 #Starts the program
 def start():
-    os.system("cls")
-    print("~Waiting for input.~")
+    os.system("clear")
+    print("~Waiting for input~")
     master = Tk()
     app = Window(master)
     master.mainloop()
