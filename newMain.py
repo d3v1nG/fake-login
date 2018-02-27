@@ -21,7 +21,7 @@ class Window(Frame):
         canvas.grid(row=5, column=5)
 
         img = PhotoImage(file="./Images/finder.gif")
-        canvas.create_image(25,23, file=img)
+        canvas.create_image(25,23, image=img)
 
     def widgets(self):
         okayButton = Button(self, text="Okay", command=self.okay)
